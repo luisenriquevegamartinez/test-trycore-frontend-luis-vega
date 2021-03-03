@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlServer: 'https://test-traycore-backend.test/api/'
+  urlServer: 'http://127.0.0.1:8080/api/'
 };
 
 /*
