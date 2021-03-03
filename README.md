@@ -46,7 +46,7 @@ export const environment = {
 
 se debe reemplazar la linea http://127.0.0.1:8080/api/ con la url correspondiente al dominio donde se despliegue el backend
 
-## Servidor de Desarrollo
+## Lanzar en modo de Desarrollo
 
 Ejecute `ng serve` para un servidor de desarrollo. Vaya a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos de origen.
 
