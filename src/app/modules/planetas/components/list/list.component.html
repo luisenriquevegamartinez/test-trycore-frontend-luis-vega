@@ -1,0 +1,53 @@
+<br>
+<div>
+
+</div>
+<h1 style="text-align: center;">
+  <mat-icon>public</mat-icon>
+  &nbsp;
+  <strong>Planetas</strong>
+</h1>
+<div style="text-align: center;">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar</mat-label>
+    <input matInput placeholder="Termino de Busqueda" [(ngModel)]="termino" (keyup)="getPlanetas()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<div *ngIf="planetas; else loading">
+  <mat-list>
+    <div *ngFor="let planeta of planetas; let i = index" class="container-list">
+      <mat-list-item>
+        <mat-icon *ngIf="!termino" [color]="i > 2 || planeta.contador == 0? 'basic' : 'accent'">{{ i > 2 || planeta.contador == 0? "public" : i == 0 ?
+          "looks_one" : i == 1 ?
+          "looks_two" : "looks_3" }}</mat-icon>
+
+        <mat-icon *ngIf="termino">public</mat-icon>
+        &nbsp;
+        {{ planeta.nombre }}
+        <span class="spacer"></span>
+        <button mat-raised-button color="primary" style="border-radius: 50px;" (click)="openShowModal(planeta)">
+          <mat-icon>visibility</mat-icon>&nbsp;{{ planeta.contador }}
+        </button>
+        <button mat-button style="color: teal;" (click)="openDialogForm(planeta)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button color="warn" (click)="openDialogConfirm(planeta)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+  <button mat-fab color="primary" color="accent" aria-label="Example icon button with a delete icon"
+    style="position: fixed; bottom: 5vh; right: 5vw;" (click)="openDialogForm()">
+    <mat-icon>add</mat-icon>
+
+  </button>
+
+</div>
+<ng-template #loading>
+  <mat-spinner style="margin: auto; top:40%"></mat-spinner>
+  <h3 style="text-align: center;">Cargando...</h3>
+</ng-template>

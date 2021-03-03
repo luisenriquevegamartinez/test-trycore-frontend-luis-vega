@@ -1,0 +1,86 @@
+<h2 style="text-align: center;" (click)="formula()">Formulario de Planetas</h2>
+<form autocomplete="off" [formGroup]="formulario" (ngSubmit)="onNoClick(true)">
+  <div style="text-align: center;">
+    <input type="hidden" formControlName="id">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-icon matSuffix>public</mat-icon>
+      <mat-hint>no mas de 50 caracteres</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Terreno</mat-label>
+      <mat-select formControlName="terreno">
+        <mat-option *ngFor="let terreno of terrenos" [value]="terreno">{{ terreno }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+
+    <mat-form-field appearance="outline">
+      <mat-label>Clima</mat-label>
+      <mat-select formControlName="clima">
+        <mat-option *ngFor="let clima of climas" [value]="clima">{{ clima }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Diametro Km</mat-label>
+      <input matInput formControlName="diametro" type="number">
+      <mat-icon matSuffix>straighten</mat-icon>
+      <mat-hint>
+        {{
+        formulario.get('diametro')?.hasError('maxlength')
+        ? "numero maximo de caracteres 50"
+        :" notacion exponencial Ej: 0.1e+3"
+        }}
+      </mat-hint>
+    </mat-form-field>
+    &nbsp;
+
+    <mat-form-field appearance="outline">
+      <mat-label>Masa Kg</mat-label>
+      <input matInput formControlName="masa">
+      <mat-icon matSuffix>fitness_center</mat-icon>
+      <mat-hint>
+        {{
+        formulario.get('masa')?.hasError('maxlength')
+        ? "numero maximo de caracteres 50"
+        :" notacion exponencial Ej: 0.1e+3"
+        }}
+      </mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Periodo de rotación Seg</mat-label>
+      <input matInput formControlName="periodo_rotacion">
+      <mat-icon matSuffix>timer_sand</mat-icon>
+      <mat-hint>
+        {{
+        formulario.get('periodo_rotacion')?.hasError('maxlength')
+        ? "numero maximo de caracteres 50"
+        :" notacion exponencial Ej: 0.1e+3"
+        }}
+      </mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Radio orbita Dias</mat-label>
+      <input matInput formControlName="radio_orbital">
+      <mat-icon matSuffix>timer_sand</mat-icon>
+      <mat-hint>
+        {{
+        formulario.get('radio_orbital')?.hasError('maxlength')
+        ? "numero maximo de caracteres 50"
+        :" notacion exponencial Ej: 0.1e+3"
+        }}
+      </mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid">Aceptar</button>
+    &nbsp;
+    <button mat-raised-button (click)="onNoClick()" type="reset">Cancelar</button>
+  </div>
+</form>

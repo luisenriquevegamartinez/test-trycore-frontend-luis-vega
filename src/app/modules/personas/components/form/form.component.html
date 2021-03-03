@@ -1,0 +1,79 @@
+<h2 style="text-align: center;">Formulario de Persona</h2>
+<form autocomplete="off" [formGroup]="formulario" (ngSubmit)="onNoClick(true)">
+  <div style="text-align: center;">
+    <input type="hidden" formControlName="id">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombres</mat-label>
+      <input matInput formControlName="nombres">
+      <mat-icon matSuffix>badge</mat-icon>
+      <mat-hint>no mas de 50 caracteres</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Apellidos</mat-label>
+      <input matInput formControlName="apellidos">
+      <mat-icon matSuffix>badge</mat-icon>
+      <mat-hint>no mas de 50 caracteres</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Numero Identidad</mat-label>
+      <input matInput formControlName="n_idententidad">
+      <mat-icon matSuffix>badge</mat-icon>
+      <mat-hint [style.color]="formulario.get('n_idententidad')?.hasError('noDisponible')?'red':''">
+        {{
+        formulario.get('n_idententidad')?.hasError('noDisponible')
+        ? "el numero de identidas ya ha sido usado"
+        :"solo numeros no mas de 50 caracteres"
+        }}
+      </mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>edad</mat-label>
+      <input matInput formControlName="edad">
+      <mat-icon matSuffix>timer_sand</mat-icon>
+      <mat-hint>numeros no superiores a 3 cifras</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>peso</mat-label>
+      <input matInput formControlName="peso">
+      <mat-icon matSuffix>fitness_center</mat-icon>
+      <mat-hint>numeros no superiores a 3 cifras</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>altura</mat-label>
+      <input matInput formControlName="altura">
+      <mat-icon matSuffix>straighten</mat-icon>
+      <mat-hint>numeros no superiores a 3 cifras</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>genero</mat-label>
+      <input matInput formControlName="genero">
+      <mat-icon matSuffix>female</mat-icon>
+      <mat-hint>"F": femenino, "M": masculino</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>fecha_nacimiento</mat-label>
+      <input matInput formControlName="fecha_nacimiento">
+      <mat-icon matSuffix>event_available</mat-icon>
+      <mat-hint>fecha formato "aaaa-mm-dd"</mat-hint>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Seleccione un planeta</mat-label>
+      <mat-select formControlName="planeta_id">
+        <mat-option *ngFor="let planeta of planetas" [value]="planeta.id">{{ planeta.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid">Aceptar</button>
+    &nbsp;
+    <button mat-raised-button (click)="onNoClick()" type="reset">Cancelar</button>
+  </div>
+</form>

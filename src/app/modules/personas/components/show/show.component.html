@@ -1,0 +1,21 @@
+<div *ngIf="persona; else loading">
+  <mat-list role="list">
+    <mat-list-item role="listitem"><strong>Nombres:</strong> &nbsp;{{ persona.nombres }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Apellidos:</strong> &nbsp;{{ persona.apellidos }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Numero Idententidad:</strong> &nbsp;{{ persona.n_idententidad }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Altura:</strong> &nbsp;{{ persona.altura }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Edad:</strong> &nbsp;{{ persona.edad }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Peso:</strong> &nbsp;{{ persona.peso }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Genero:</strong> &nbsp;{{ persona.genero }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Planeta:</strong> &nbsp;{{ persona.planeta?.nombre }} </mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Fecha de nacimiento:</strong> &nbsp;{{ persona.fecha_nacimiento | date:"short" }}</mat-list-item><mat-divider></mat-divider>
+    <mat-list-item role="listitem"><strong>Numero de visitas:</strong> &nbsp;{{ persona.contador }} </mat-list-item><mat-divider></mat-divider>
+
+  </mat-list>
+
+</div>
+
+<ng-template #loading>
+  <mat-spinner style="margin: auto; top:40%"></mat-spinner>
+  <h3 style="text-align: center;">Cargando...</h3>
+</ng-template>

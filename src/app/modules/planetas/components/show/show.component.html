@@ -1,0 +1,51 @@
+<div *ngIf="planeta; else loading">
+  <div style="display: flex">
+
+    <mat-list role="list">
+      <mat-list-item role="listitem"><strong>Nombre:</strong> &nbsp;{{ planeta.nombre }} </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem"><strong>Terreno:</strong> &nbsp;{{ planeta.terreno }} </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem"><strong>Clima:</strong> &nbsp;{{ planeta.clima }} </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem"><strong>Diametro:</strong> &nbsp;{{ planeta.diametro }} </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <mat-list role="list">
+      <mat-list-item role="listitem"><strong>Masa:</strong> &nbsp;{{ planeta.masa }} </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem"><strong>Periodo de Rotación:</strong> &nbsp;{{ planeta.periodo_rotacion }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem"><strong>Radio Orbita:</strong> &nbsp;{{ planeta.radio_orbital }} </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem"><strong>Visitas:</strong> &nbsp;{{ planeta.contador }} </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+
+  <h3 style="text-align: center;"><strong>Habitantes:</strong></h3>
+  <mat-divider></mat-divider>
+  <div style="max-height: 30vh; overflow-y: scroll">
+    <mat-list role="list">
+      <mat-list-item *ngFor="let persona of planeta.personas" role="listitem">{{ persona.nombres }}
+        &nbsp;{{ persona.apellidos }} <span class="spacer"></span>
+        <button mat-raised-button disabled style="border-radius: 50px;">
+          <mat-icon>visibility</mat-icon>
+          {{ persona.contador }}
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+  </div>
+
+
+
+
+</div>
+
+<ng-template #loading>
+  <mat-spinner style="margin: auto; top:40%"></mat-spinner>
+  <h3 style="text-align: center;">Cargando...</h3>
+</ng-template>

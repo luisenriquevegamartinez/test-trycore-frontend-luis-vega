@@ -1,0 +1,39 @@
+<mat-toolbar color="basic">
+  <button (click)="drawer.toggle()" mat-icon-button class="icon" aria-label="icon-button with menu icon">
+    <mat-icon mat-raised-button>menu</mat-icon>
+  </button>
+  <span id="titulo">Prueba Tecnica Trycore</span>
+  <span class="spacer"></span>
+  <button mat-icon-button class="icon" aria-label="icon-button with share icon">
+  </button>
+  <img src="/assets/logo-trycore-bpm-colombia.png" alt="logo_trycore" routerLink="/">
+
+
+</mat-toolbar>
+
+
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <!-- contenido menu -->
+
+    <mat-list role="list">
+      <mat-list-item role="listitem" routerLink="/personas/listar">
+        <mat-icon>people</mat-icon>
+        <mat-divider></mat-divider>&nbsp;Personas
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem" routerLink="/planetas/listar">
+        <mat-icon>public</mat-icon>&nbsp;Planetas
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+  </mat-drawer>
+
+  <!-- contenido pagina -->
+
+  <router-outlet></router-outlet>
+
+
+
+</mat-drawer-container>
